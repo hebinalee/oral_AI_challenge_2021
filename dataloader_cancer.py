@@ -1,3 +1,10 @@
+##############################################################
+## ImageDataset: class to save and deal with the data files
+## read_data   : File name is given, read data and return
+##               image array and its label and location info
+## test_example: to test the code, can be ignored
+##############################################################
+
 import glob, os, re, random
 import numpy as np
 import pandas as pd
