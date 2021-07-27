@@ -1,4 +1,5 @@
 ##############################################################
+## READ DATA FROM FILENAMES AND SAVE IMAGE AND LABELS 
 ## ImageDataset: class to save and deal with the data files
 ## read_data   : File name is given, read data and return
 ##               image array and its label and location info
