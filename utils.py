@@ -1,3 +1,15 @@
+##########################################################################
+## FUNCTIONS UTILIZED IN MAIN SCRIPT
+## seed_everything: set seed for all options for reproducibility
+## label_to_num   : convert string type label into int type (-1, 0, 1)
+## train_split    : split dataset into train/test dataset
+## divide_into_   : divide dataset into k-fold
+## my_model       : choose model
+## get_transform  : return transformed image
+##                  (different transform is chose depend on type number)
+## cutout         : perform cutout
+##########################################################################
+
 import os
 import random
 import numpy as np
@@ -46,46 +58,6 @@ def train_split(labels, ratio):
 
     np.random.shuffle(train_indices)
     return train_indices.astype(int)
-
-
-def divide_fold(labels=None, num_fold=5):
-    num_classes = len(np.unique(labels))
-    num_total = len(labels)
-    num_val = round(num_total/num_fold)
-    num_train = num_total - num_val
-    train_indices = np.zeros((num_fold, num_train))
-    ''' fold 1 '''
-    tidx = np.array([])
-    for i in range(num_classes):
-        class_indices = np.where(labels == i)[0]
-        num_class = len(class_indices)
-        num_train = round(num_class*(1-1/num_fold))
-        selected = np.random.choice(num_class, num_train, replace=False)
-        tidx = np.hstack((tidx, class_indices[selected])).astype(int)
-    np.random.shuffle(tidx)
-    train_indices[0,:] = tidx
-
-    ''' fold 2 - 5 '''
-    labels = np.array([labels[i] for i in tidx])
-    num_fold = num_fold-1
-    val_indices = np.zeros((num_fold, num_val))
-    ii = 0
-    for i in range(num_classes):
-        class_indices = np.where(labels == i)[0]
-        num_class = len(class_indices)
-        num_train = round(num_class/num_fold)
-        num_val = int(num_class/num_fold)
-        np.random.shuffle(class_indices)
-        class_indices = np.array([tidx[i] for i in class_indices])
-        indices = np.reshape(class_indices[:num_fold*num_val], (num_fold, num_val))
-        val_indices[:, ii:ii+num_val] = indices
-        ii = ii + num_val
-
-    for i in range(num_fold):
-        buf = np.setdiff1d(range(num_total), val_indices[i])
-        np.random.shuffle(buf)
-        train_indices[i+1] = buf
-    return train_indices.astype(np.int)
 
 
 def divide_into_(labels, num_fold):
@@ -249,25 +221,6 @@ def get_transform(augmentation):
 
 
 def cutout(img, min_box=25, max_box=100, ratio=4):
-    imgs_cutout=img.copy()
-    xspace = img.shape[0]//ratio
-    yspace = img.shape[1]//ratio
-    if random.random()<0.5:
-        random_st_x = random.randint(0,xspace)
-        random_st_y = random.randint(0,yspace)
-        random_width=random.randint(min_box,xspace)
-        random_hight=random.randint(min_box,xspace)
-    else:
-        random_st_x = random.randint(xspace*2,img.shape[0]-100)
-        random_st_y = random.randint(yspace*2,img.shape[1]-100)
-        random_width=random.randint(min_box,xspace)
-        random_hight=random.randint(min_box,yspace)
-
-    imgs_cutout[random_st_x:random_st_x+random_width,random_st_y:random_st_y+random_hight]=0
-    return imgs_cutout
-
-
-def cutout2(img, min_box=25, max_box=100, ratio=4):
     imgs_cutout=img.copy()
     xspace = img.shape[0]//ratio
     yspace = img.shape[1]//ratio
