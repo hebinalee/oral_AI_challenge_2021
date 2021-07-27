@@ -1,3 +1,8 @@
+##############################################
+## train: perform traning of the model
+## test : perform test of the trained model
+##############################################
+
 import time
 import numpy as np
 from copy import deepcopy
