@@ -1,3 +1,12 @@
+##########################################################################
+## TO CALCULATE EVALUATION METRICS
+## _confusion_matrix: compute confusion matrix for binary classification
+##                    when prediction and ground truth are given
+## confusion_2      : compute confusion matrix for binary labels
+## confusion_3      : compute confusion matrix for 3 classes
+## get_metrics      : calculate evaluation metrics
+##                    (AUC, accuracy, precision, recall, F1-score)
+##########################################################################
 import os
 import numpy as np
 from sklearn.metrics import roc_auc_score
