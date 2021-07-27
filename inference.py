@@ -1,4 +1,5 @@
 #######################################################################
+## PREFORM INFERENCE WITH GIVEN DATASET AND TRAINED MODEL
 ## infer        : predict class of the input image with trained model
 ## get_transform: get transform type and return processed image
 ## main         : prtform infernece for the dataset
