@@ -1,4 +1,5 @@
 ##############################################
+## TRAIN CLASSIFIER AND TEST IT
 ## train: perform traning of the model
 ## test : perform test of the trained model
 ##############################################
