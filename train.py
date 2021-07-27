@@ -1,76 +1,7 @@
-import os, sys, glob, re
-import random
-import numpy as np
-import time
-import pandas as pd
+####################################
+##  PERFORM TRAINING OF CLASSIFIER
+####################################
 
-import torch
-from torch.utils.data import DataLoader
-from torch.utils.data.sampler import SubsetRandomSampler
-import torchvision
-from torchvision import models, transforms
-from efficientnet_pytorch import EfficientNet
-from albumentations.pytorch import ToTensorV2
-
-basepath = '/USER/INFERENCE/CANCER/'
-sys.path.append(basepath + 'src/')
-from utils import seed_everything, divide_fold, my_model, get_transform
-from dataloader_cancer import ImageDataset
-from classifier import train,test
-
-
-#trial_no = 1
-seed=20
-seed_everything(seed)
-
-num_channels = 3
-num_classes = 2
-num_fold = 5
-
-def main(N_fold, batch_size, lr, n_epochs, num_workers, split_ratio, model_type, weight_filename, trial_no, augmentation, small_size, shuffle_data, class_balance, skip_batch, prefix):
-    if not os.path.exists(basepath+'val_perf'):
-        os.makedirs(basepath+'val_perf')
-
-    #N_fold = 4
-
-    TRANSFORM = get_transform(augmentation)
-
-    '''
-    Dataset
-    '''
-    filenames = glob.glob('/DATA/data_cancer/train/*.jpg')
-    targets = [re.sub(r'^.+/','',x).replace('.jpg','').split('_')[-1] for _,x in enumerate(filenames)]
-    labels = []
-    for x in targets:
-        if x == 'C': labels.append(1)
-        else: labels.append(0)
-
-    num_train = len(labels)
-    train_indices = divide_fold(np.array(labels), num_fold)[N_fold]
-    if shuffle_data:
-       np.random.shuffle(train_indices)
-    print('** train_indices: ', train_indices)
-    val_indices = np.setdiff1d(range(num_train), train_indices)
-    del targets, labels
-
-    filenames = np.array(filenames)
-    print('** do_augment: ', augmentation)
-    if augmentation:
-        stack_train = []
-        num_train = len(train_indices)
-        #for aug in aug_transform.keys():
-        stack_train.append(ImageDataset('train', TRANSFORM['base'], augmentation, small_size, filenames[train_indices].tolist()))
-        if augmentation < 3:
-            for i in range(augmentation):
-                fn = filenames[np.random.choice(num_train, int(num_train/2), replace=False)]
-            stack_train.append(ImageDataset('train', TRANSFORM['affine'], augmentation, small_size, fn.tolist()))
-            for i in range(augmentation):
-                fn = filenames[np.random.choice(num_train, int(num_train/2), replace=False)]
-            stack_train.append(ImageDataset('train', TRANSFORM['flip'], augmentation, small_size, fn.tolist()))
-        elif augmentation == 3:
-            for i in range(augmentation):
-                fn = filenames[np.random.choice(num_train, int(num_train/4), replace=False)]
-            stack_train.append(ImageDataset('train', TRANSFORM['blur'], augmentation, small_size, fn.tolist()))
 import os, sys, glob, re
 import random
 import numpy as np
