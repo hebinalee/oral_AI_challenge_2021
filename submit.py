@@ -1,6 +1,9 @@
+#############################
+## SUBMIT INFERENCE RESULTS
+#############################
+
 import requests
 import argparse
-
 
 def submit(result):
     task_no = 2
