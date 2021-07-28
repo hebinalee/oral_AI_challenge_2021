@@ -12,4 +12,4 @@ Link: http://aifactory.space/task/detail.do?taskId=T001727<br /><br />
 - **inference.py**          -----  predict label with given dataset and trained model<br />
 - **submit.py**             -----  submit inference results<br /><br />
 
-**copyrightⓒ 2008 All rights reserved by Hyebin Lee, Jieun Choi, Eunjin Kim, and Ajou University Hospital<br /><br />**
+**copyrightⓒ 2021 All rights reserved by Hyebin Lee, Jieun Choi, Eunjin Kim, and Ajou University Hospital<br /><br />**
