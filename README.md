@@ -1,5 +1,6 @@
 ## oral_AI_challenge_2021 ##
-Submitted code for 2021 Oral AI challenge<br />
+Submitted code for 2021 Oral AI challenge (2021 구강계질환 의료영상 인공지능 경진대회)<br />
+hosted by Samsung Seoul Hospital, Ajou University Hospital, and MINDs n company<br />
 Link: https://www.notion.so/hebinalee/78d2b3fef49946c185acf5879b18e177#1d950888cf064eccbe7c4852c86a4f21<br /><br />
 
 - **dataloader_cancer.py**  -----  to read data from filenames and save image and label data<br />
