@@ -10,6 +10,6 @@ hosted by Samsung Seoul Hospital, Ajou University Hospital, and MINDs'n company<
 - **metrics.py**　　　　　　-----　to calculate evaluation metrics<br />
 - **utils.py**　　　　　　　-----　functions utilized in main script<br />
 - **inference.py**　　　　　-----　predict label with given dataset and trained model<br />
-- **submit.py**　　　　　　-----　submit inference results<br /><br />
+- **submit.py**　　　　　　-----　to submit inference results<br /><br />
 
 **copyrightⓒ 2021 All rights reserved by Hyebin Lee, Jieun Choi, Eunjin Kim, and Ajou University Hospital<br /><br />**
