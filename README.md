@@ -12,4 +12,17 @@ hosted by Samsung Seoul Hospital, Ajou University Hospital, and MINDs'n company<
 - **inference.py**　　　　　-----　predict label with given dataset and trained model<br />
 - **submit.py**　　　　　　-----　to submit inference results<br /><br />
 
+```bash
+├── README.md
+├── dataloader_cancer.py
+├── classifier.py
+├── train.py
+├── train.sh
+├── metrics.py
+├── utils.py
+├── inference.py
+└── submit.py
+```
+<br />
+
 **copyrightⓒ 2021 All rights reserved by Hyebin Lee, Jieun Choi, Eunjin Kim, and Ajou University Hospital<br /><br />**
