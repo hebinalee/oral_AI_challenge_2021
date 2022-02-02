@@ -14,7 +14,7 @@ hosted by Samsung Seoul Hospital, Ajou University Hospital, and MINDs'n company<
 - **inference.py**　　　　　-----　predict label with given dataset and trained model<br />
 - **submit.py**　　　　　　-----　to submit inference results<br /><br />
 
-## Directory structure
+## Directory Structure
 ```bash
 ├── README.md
 ├── dataloader_cancer.py
